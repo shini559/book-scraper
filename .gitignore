@@ -135,7 +135,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+project_book_scraper/.env
 .envrc
 .venv
 env/
