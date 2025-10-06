@@ -7,7 +7,6 @@ load_dotenv()
 # --- DÉFINITION DE NOS FONCTIONS D'ANALYSE ---
 
 def get_average_price_by_category(cursor):
-    # ... (fonction existante)
     print("\n--- Analyse 1 : Prix Moyen par Catégorie ---")
     sql_query = """
         SELECT category, AVG(price) AS average_price
@@ -21,7 +20,6 @@ def get_average_price_by_category(cursor):
         print(f"Catégorie: {row[0]:<25} | Prix Moyen: £{round(row[1], 2)}")
 
 def get_top_five_categories_by_book_count(cursor):
-    # ... (fonction existante)
     print("\n--- Analyse 2 : Top 5 des Catégories par Nombre de Livres ---")
     sql_query = """
         SELECT category, COUNT(id) AS book_count
@@ -79,7 +77,7 @@ try:
     get_average_price_by_category(cur)
     get_top_five_categories_by_book_count(cur)
     get_top_rated_books(cur)
-    get_average_rating_by_category(cur) # Ajout de l'appel à la nouvelle fonction
+    get_average_rating_by_category(cur)
 
     cur.close()
 
