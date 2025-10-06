@@ -32,7 +32,6 @@ class BookScraperPipeline:
                 description TEXT
             )
         """)
-        # On ajoute un commit ici pour s'assurer que la création est bien enregistrée
         self.con.commit()
         print("👍 La table 'books' est prête.")
 

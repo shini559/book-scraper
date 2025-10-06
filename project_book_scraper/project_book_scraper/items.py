@@ -8,7 +8,7 @@ import re
 def clean_price(text):
     """
     Extrait le nombre (entier ou à virgule) d'une chaîne de caractères.
-    Exemple : '£51.77' -> '51.77'
+
     """
 
     match = re.findall(r'[\d.]+', text)
@@ -20,7 +20,6 @@ def clean_price(text):
 def clean_stock(text):
     """
     Extrait le nombre de livres en stock.
-    Exemple : 'In stock (22 available)' -> '22'
     """
     match = re.findall(r'\d+', text)
     if match:
@@ -37,11 +36,10 @@ def strip_text(text):
 
 def convert_rating_to_int(class_text):
     """
-    Extrait la note textuelle ('One', 'Two', ...) de la classe CSS
-    et la convertit en chiffre (1, 2, ...).
+    Extrait la note textuelle ('One', 'Two') de la classe CSS
+    et la convertit en chiffre (1, 2).
     """
-    # On sépare "star-rating One" en une liste ["star-rating", "One"]
-    # et on prend le deuxième élément.
+
     rating_text = class_text.split(' ')[1]
 
     ratings = {
@@ -88,7 +86,7 @@ class BookScraperItem(scrapy.Item):
         input_processor=MapCompose(convert_rating_to_int),
         output_processor=TakeFirst()
     )
-    # Pour les catégorie
+    # Les catégorie
     category = scrapy.Field(
         input_processor=MapCompose(strip_text),
         output_processor=TakeFirst()

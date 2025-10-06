@@ -1,4 +1,3 @@
-# Dans le fichier test_connection.py
 
 import os
 import psycopg2
@@ -18,13 +17,11 @@ try:
         dbname=os.getenv('DB_NAME')
     )
 
-    # Si la ligne ci-dessus n'a pas provoqué d'erreur, la connexion est réussie !
     print("✅ Connexion à la base de données Azure réussie !")
 
-    # On referme la connexion proprement
+    # On referme la connexion
     conn.close()
 
 except psycopg2.Error as e:
-    # Si une erreur se produit pendant la connexion, on l'affiche.
     print("❌ Échec de la connexion.")
     print(f"L'erreur suivante s'est produite : {e}")
